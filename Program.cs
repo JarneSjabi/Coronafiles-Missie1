@@ -1,57 +1,49 @@
-﻿Virus v = new Virus();
+﻿Dictionary<string, VaccinatieCentrum> centraDB = new Dictionary<string, VaccinatieCentrum>();
 
-List<Vaccin> vaccins = new List<Vaccin>();
-for (int i = 0; i < 5; i++)
+while (true)
 {
-    vaccins.Add(new Vaccin(i.ToString()));
-}
-
-Vaccin theCure = null;
-bool cureGevonden = false;
-while (v.DoomCountDown > 0 && cureGevonden == false)
-{
-    foreach (Vaccin vaccin in vaccins)
+    Console.WriteLine("Wat wil je doen?");
+    Console.WriteLine("1. Centra tonen");
+    Console.WriteLine("2. Centrum bijmaken");
+    Console.WriteLine("3. Centra vaccins laten maken");
+    int keuze = Convert.ToInt32(Console.ReadLine());
+    switch (keuze)
     {
-        if (v.TryVaccin(vaccin) == true)
-        {
-            theCure = vaccin;
-            cureGevonden = true;
+        case 1:
+            foreach (var centrum in centraDB)
+            {
+                Console.WriteLine(centrum.Key);
+            }
             break;
-        }
-    }
-}
+        case 2:
+            Console.WriteLine("Waar wil je dit bouwen?");
+            string waar = Console.ReadLine();
+            if (centraDB.ContainsKey(waar))
+                Console.WriteLine("Dat land heeft reeds een centrum");
+            else
+                centraDB.Add(waar, new VaccinatieCentrum());
+            Console.WriteLine("Gebouwd!");
+            break;
+        case 3:
+            Console.WriteLine("Welk land moet vaccins maken?");
+            string waarv = Console.ReadLine();
+            if (centraDB.ContainsKey(waarv))
+            {
+                Vaccin gemaaktVaccin = centraDB[waarv].GeefVaccin();
+                Console.WriteLine("Vaccin gemaakt");
+                // ...
+            }
 
-if (cureGevonden == true)
-{
-    //Fase 2
-    theCure.ToonInfo();
-    VaccinatieCentrum.BewaarVaccin(theCure.Oplossing);
-
-    List<VaccinatieCentrum> centra = new List<VaccinatieCentrum>();
-    for (int i = 0; i < 5; i++)
-    {
-        centra.Add(new VaccinatieCentrum());
-    }
-
-    List<Vaccin> containerVaccins = new List<Vaccin>();
-    foreach (var centrum in centra)
-    {
-        for (int i = 0; i < 7; i++)
-        {
-
-            containerVaccins.Add(centrum.GeefVaccin());
-        }
-    }
-
-
-    for (int i = 0; i < containerVaccins.Count; i++)
-    {
-        Console.Write(i);
-        containerVaccins[i].ToonInfo();
+            else
+                Console.WriteLine("Dat land heeft geen vaccinatiecntrum");
+            break;
+        default:
+            Console.WriteLine("Onbekend getal");
+            break;
     }
 
-}
-else
-{
-    Console.WriteLine("Gedaan");
+
+    Console.WriteLine("Waar moet centra komen?");
+    string stadin = Console.ReadLine();
+
 }
