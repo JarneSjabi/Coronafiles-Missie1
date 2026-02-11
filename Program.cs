@@ -31,7 +31,7 @@ while (true)
             {
                 Vaccin gemaaktVaccin = centraDB[waarv].GeefVaccin();
                 Console.WriteLine("Vaccin gemaakt");
-                // ...
+                gemaaktVaccin.ToonInfo();
             }
 
             else
