@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CoronaFiles_1.CoronaFiles_1;
 
 namespace CoronaFiles_1
 {
     class StadsEnclave : Enclave
     {
-        private WaterkrachtCentrale waterkrachtcentrale;
+        private Waterkrachtcentrale waterkrachtcentrale;
         private Hospitaal extrahospitaal;
         private List<Flat> flats = new List<Flat>();
 
@@ -19,7 +20,7 @@ namespace CoronaFiles_1
                 {
                     woningen.RemoveAt(0);
                 }
-                flats.Add(new Flat(r.Next(1, Console.WindowWidth), r.Next(1, Console.WindowHeight)));
+                flats.Add(new Flat("woonst", r.Next(1, Console.WindowWidth), r.Next(1, Console.WindowHeight)));
             }
         }
         public override void ToonEclave()

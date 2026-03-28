@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoronaFiles_1.CoronaFiles_1;
+using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Text;
@@ -19,7 +20,7 @@ namespace CoronaFiles_1
             generator = new Generator("generator1", r.Next(1, Console.WindowWidth), r.Next(1, Console.WindowHeight));
             for (int i = 0; i < 3; i++)
             {
-                woningen.Add(new Woonst(r.Next(1, Console.WindowWidth), r.Next(1, Console.WindowHeight)));
+                woningen.Add(new Woonst("woonst", r.Next(1, Console.WindowWidth), r.Next(1, Console.WindowHeight)));
             }
 
         }
@@ -35,7 +36,7 @@ namespace CoronaFiles_1
 
             } while (!IsLeeg(xpoging, ypoging));
 
-            woningen.Add(new Woonst(xpoging, ypoging));
+            woningen.Add(new Woonst("woonst", xpoging, ypoging));
         }
 
 
