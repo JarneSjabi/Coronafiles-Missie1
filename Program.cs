@@ -6,6 +6,7 @@ while (true)
     Console.WriteLine("1. Centra tonen");
     Console.WriteLine("2. Centrum bijmaken");
     Console.WriteLine("3. Centra vaccins laten maken");
+    Console.WriteLine("4. Enkele gebouwen/enclaves aanmaken (H3 gerelateerd)");
     int keuze = Convert.ToInt32(Console.ReadLine());
     switch (keuze)
     {
@@ -37,6 +38,18 @@ while (true)
             else
                 Console.WriteLine("Dat land heeft geen vaccinatiecntrum");
             break;
+        case 4:
+            List<Gebouw> enclave=new List<Gebouw>();
+            enclave.Add(new Hospitaal("Sint Vincentius",4, 5));
+            enclave.Add(new Woonst("Tims shack",1, 1));
+            enclave.Add(new Generator("batteryshed 1",1, 2));
+            
+            foreach(var gebouw in enclave)
+            {
+                gebouw.PrintGebouw();
+            }
+            break;
+            
         default:
             Console.WriteLine("Onbekend getal");
             break;
